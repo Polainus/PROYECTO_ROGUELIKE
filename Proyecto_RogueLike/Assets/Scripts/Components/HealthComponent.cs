@@ -1,8 +1,9 @@
 using UnityEngine;
 
-public class HealthComponent : MonoBehaviour
+
+public class HealthComponent : MonoBehaviour 
 {
-    float currentHealth;
+    private float currentHealth;
     public float CurrentHealth
     {
         get => currentHealth;
@@ -28,5 +29,22 @@ public class HealthComponent : MonoBehaviour
     {
         currentHealth = maxHealth;
     }
+    public void TakeDamage(float damage)
+    {
+        InterfaceHealth healthInterface = GetComponent<InterfaceHealth>();
+        CurrentHealth -= damage;
+        if (CurrentHealth <= 0)
+        {
+            CurrentHealth = 0;
+            
+            healthInterface?.OnDeath();
+        }
+        else
+        {
+            
+            healthInterface?.OnTakeDamage();
+        }
+    }
+
 }
 

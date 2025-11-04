@@ -1,11 +1,8 @@
 using UnityEngine;
 
-public class InterfaceHealth : MonoBehaviour
+public interface InterfaceHealth
 {
-   public interface IHealth
-        {
-            void OnTakeDamage();
-            void OnHeal();
-            void OnDeath();
-        }
+    void OnTakeDamage();
+    void OnHeal();
+    void OnDeath();       
 }
